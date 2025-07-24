@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sort & Search Visualizer</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 Sort & Search Visualizer</h1>
+
+   <div class="controls">
+  <button onclick="generateArray()">🎲 Generate Array</button>
+  <select id="sortAlgo">
+    <option value="bubble">Bubble Sort</option>
+    <option value="selection">Selection Sort</option>
+    <option value="insertion">Insertion Sort</option>
+    <option value="merge">Merge Sort</option>
+    <option value="quick">Quick Sort</option>
+  </select>
+  <button onclick="startSort()">⬆️ Sort</button>
+  <button onclick="linearSearch()">🔎 Linear Search</button>
+  <button onclick="binarySearch()">🧠 Binary Search</button>
+  <input id="searchValue" type="number" placeholder="Search value" />
+</div>
+
+
+    <div id="array" class="bar-container"></div>
+
+    <div id="log" class="log-box">
+      <h3>📝 Steps:</h3>
+      <ul id="steps"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
