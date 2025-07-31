@@ -1,11 +1,23 @@
-/* General Reset */
+
+
+input {
+  width: 150px;
+  background-color: #fefefe;
+  border: 1px solid #ccc;
+}
+
+
+#barCount {
+  width: 140px;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body & Container */
+/* Body & container */
 body {
   background: linear-gradient(135deg, #e3f2fd, #ffffff);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -70,7 +82,7 @@ input {
   border: 1px solid #ccc;
 }
 
-/* Array Visualizer */
+/* Array visualizerrr */
 .bar-container {
   height: 300px;
   display: flex;
@@ -112,7 +124,7 @@ input {
   background-color: #2196f3 !important;
 }
 
-/* Log Box */
+/* Log box */
 .log-box {
   margin-top: 30px;
   padding: 15px;
