@@ -8,28 +8,29 @@
 </head>
 <body>
   <div class="container">
-    <h1>🔍 Sort & Search Visualizer</h1>
+    <h1> Sort & Search Visualizer</h1>
 
-   <div class="controls">
-  <button onclick="generateArray()">🎲 Generate Array</button>
-  <select id="sortAlgo">
-    <option value="bubble">Bubble Sort</option>
-    <option value="selection">Selection Sort</option>
-    <option value="insertion">Insertion Sort</option>
-    <option value="merge">Merge Sort</option>
-    <option value="quick">Quick Sort</option>
-  </select>
-  <button onclick="startSort()">⬆️ Sort</button>
-  <button onclick="linearSearch()">🔎 Linear Search</button>
-  <button onclick="binarySearch()">🧠 Binary Search</button>
-  <input id="searchValue" type="number" placeholder="Search value" />
-</div>
-
+    <div class="controls">
+      <input id="barCount" type="number" min="5" max="100" placeholder="Number of Bars" />
+      <button onclick="generateArray()"> Generate Array</button>
+      <select id="sortAlgo">
+        <option value="bubble">Bubble Sort</option>
+        <option value="selection">Selection Sort</option>
+        <option value="insertion">Insertion Sort</option>
+        <option value="merge">Merge Sort</option>
+        <option value="quick">Quick Sort</option>
+      </select>
+      <button onclick="startSort()"> Sort</button>
+      <button onclick="linearSearch()"> Linear Search</button>
+      <button onclick="binarySearch()"> Binary Search</button>
+      <input id="searchValue" type="number" placeholder="Search value" />
+      <button onclick="resetVisualizer()"> Reset</button>
+    </div>
 
     <div id="array" class="bar-container"></div>
 
     <div id="log" class="log-box">
-      <h3>📝 Steps:</h3>
+      <h3>Steps:</h3>
       <ul id="steps"></ul>
     </div>
   </div>
