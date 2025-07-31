@@ -1,11 +1,22 @@
 let array = [];
-const arraySize = 20;
+let arraySize = 20;
 const delay = 300;
 
 function generateArray() {
+  const barCountInput = document.getElementById("barCount").value;
+  arraySize = barCountInput ? parseInt(barCountInput) : 20;
+
   array = Array.from({ length: arraySize }, () => Math.floor(Math.random() * 100) + 10);
   drawArray();
   clearSteps();
+}
+
+function resetVisualizer() {
+  array = [];
+  document.getElementById("array").innerHTML = "";
+  document.getElementById("steps").innerHTML = "";
+  document.getElementById("searchValue").value = "";
+  document.getElementById("barCount").value = "";
 }
 
 function drawArray(highlightedIndices = [], sortedIndices = []) {
@@ -33,7 +44,6 @@ function drawArray(highlightedIndices = [], sortedIndices = []) {
   });
 }
 
-
 function logStep(message) {
   const steps = document.getElementById("steps");
   const li = document.createElement("li");
@@ -49,7 +59,6 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// 🌟 Master Sort Dispatcher
 async function startSort() {
   clearSteps();
   const algo = document.getElementById("sortAlgo").value;
@@ -64,7 +73,8 @@ async function startSort() {
   logStep("✅ Sorting Completed");
 }
 
-// ✅ Bubble Sort
+// All sorting and searching functions below (unchanged)
+
 async function bubbleSort() {
   for (let i = 0; i < array.length - 1; i++) {
     for (let j = 0; j < array.length - i - 1; j++) {
@@ -80,7 +90,6 @@ async function bubbleSort() {
   }
 }
 
-// ✅ Selection Sort
 async function selectionSort() {
   for (let i = 0; i < array.length - 1; i++) {
     let minIdx = i;
@@ -98,7 +107,6 @@ async function selectionSort() {
   }
 }
 
-// ✅ Insertion Sort
 async function insertionSort() {
   for (let i = 1; i < array.length; i++) {
     let key = array[i];
@@ -117,10 +125,8 @@ async function insertionSort() {
   }
 }
 
-// ✅ Merge Sort
 async function mergeSort(left, right) {
   if (left >= right) return;
-
   const mid = Math.floor((left + right) / 2);
   await mergeSort(left, mid);
   await mergeSort(mid + 1, right);
@@ -130,7 +136,6 @@ async function mergeSort(left, right) {
 async function merge(left, mid, right) {
   let leftArr = array.slice(left, mid + 1);
   let rightArr = array.slice(mid + 1, right + 1);
-
   let i = 0, j = 0, k = left;
 
   while (i < leftArr.length && j < rightArr.length) {
@@ -165,7 +170,6 @@ async function merge(left, mid, right) {
   }
 }
 
-// ✅ Quick Sort
 async function quickSort(low, high) {
   if (low < high) {
     let pi = await partition(low, high);
@@ -197,13 +201,11 @@ async function partition(low, high) {
   return i + 1;
 }
 
-// ✅ Linear Search
 async function binarySearch() {
   clearSteps();
   const target = parseInt(document.getElementById("searchValue").value);
   if (isNaN(target)) return alert("Enter a number to search");
 
-  // Automatically sort the array (ascending) before binary search
   array.sort((a, b) => a - b);
   logStep("🛠️ Array auto-sorted for Binary Search");
   drawArray();
@@ -217,7 +219,7 @@ async function binarySearch() {
     logStep(`Checked middle ${array[mid]}`);
 
     if (array[mid] === target) {
-      logStep(`✅ Found ${target} at index ${mid}`);
+      logStep(` Found ${target} at index ${mid}`);
       drawArray([mid]);
       return;
     } else if (array[mid] < target) {
@@ -229,7 +231,7 @@ async function binarySearch() {
     }
   }
 
-  logStep(`❌ ${target} not found`);
+  logStep(` ${target} not found`);
 }
 
 async function linearSearch() {
@@ -241,16 +243,16 @@ async function linearSearch() {
   }
 
   for (let i = 0; i < array.length; i++) {
-    drawArray([i]);                // Highlight current index
-    logStep(`Checked ${array[i]}`); // Log the comparison
-    await sleep(delay);            // Delay for animation
+    drawArray([i]);
+    logStep(`Checked ${array[i]}`);
+    await sleep(delay);
 
     if (array[i] === target) {
-      logStep(`✅ Found ${target} at index ${i}`);
-      drawArray([i]);              // Highlight the found bar
+      logStep(` Found ${target} at index ${i}`);
+      drawArray([i]);
       return;
     }
   }
 
-  logStep(`❌ ${target} not found`);
+  logStep(` ${target} not found`);
 }
