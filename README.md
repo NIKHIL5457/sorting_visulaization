@@ -8,7 +8,12 @@ A dynamic and interactive visualization tool to help understand various sorting 
 
 🔄 Sort using:
 
-Bubble Sort
+Bubble Sort 
+Insertion sort
+Selection sort
+Merge sort
+Quick sort
+
 
 🔍 Search using:
 
